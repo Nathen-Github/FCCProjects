@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet", href="styles.css">
+    <title>Vanaheim Guest Survey</title>
+  </head>
+    <div class="form">
+      <div class="header">
+        <h1 id="title">Vanaheim Guest Survey</h1>
+        <p id="description">How was your stay at Vanaheim, and how can we best improve our offerings?</p>
+      </div>
+      <form id="survey-form">
+        <fieldset class="personal-info">
+          <legend>Tell us about yourself:</legend>
+          <label for="name" id="name-label">Name <input type="text"  id="name" required placeholder=" John Doe"></label>
+          <label for="email" id="email-label">Email <input type="email" id="email" required placeholder=" johndoe@email.com"></label>
+          <label for="number" id="number-label">How long was your stay? (days) <input type="number" id="number" min="1" max="365" placeholder=" 7"></label>
+        </fieldset>
+        <fieldset class="stay-information">
+          <legend>Tell us about your stay:</legend>
+          <label>How easy was it to find Vanaheim? (1-5) <select id="dropdown">
+            <option>(select one)</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select></label>
+          <p>Did you go off-roading?</p>
+           <label for="yes">Yes <input type="radio" checked name="offroad-or-no" id="yes" value="yes"></label> 
+           <label for="no">No <input type="radio" name="offroad-or-no" id="no" value="yes"></label>
+          <p>Which of these sites did you visit?</p>
+          <label for="mottakunnu">Mottakunnu <input type="checkbox" value="mottakunnu"></label>
+
+          <label for="suicide-point">Suicide Point <input type="checkbox" value="suicide-point"></label>
+
+          <label for="pine-forest">Pine Forest <input type="checkbox" value="pine-forest"></label>
+          <label for="additional-comments"> Any last comments?
+            <textarea rows="5" col="10"></textarea>
+          </label>
+        </fieldset>
+        <p id="terms">By submitting, you accept our <a href="https://en.wikipedia.org/wiki/Terms_of_service">terms and conditions</a></p>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </div>
+</html>

@@ -1,0 +1,97 @@
+body {
+    background-image: url(https://img.freepik.com/free-vector/seamless-white-interlaced-rounded-arc-patterned-background_53876-97975.jpg);
+    font-family: Tahoma;
+  }
+  
+  .form {
+    min-width: 400px;
+    max-width: 600px;
+    background-color: rgb(31, 30, 30);
+    width: 80%;
+    margin: 3vh auto;
+    padding: 3vh 1vw;
+    border-radius: 2vh;
+    color: white;
+    font-size: 15px;
+  }
+  
+  .form p {
+    font-size: 14px;
+  }
+  
+  .header h1, .header p, select {
+    text-align: center;
+    margin: 1vh 0;
+  }
+  
+  .header {
+    margin-bottom: 2vh;
+  }
+  
+  fieldset {
+    border: none;
+  }
+  
+  legend {
+    font-size: 18px;
+    text-align: center;
+    margin: 1vh auto;
+  }
+  
+  input[type="radio"], input[type="checkbox"] {
+    width: unset;
+    display: inline-block;
+  }
+  
+  label, input, select {
+    width: 100%;
+    display: block;
+    border-radius: 1vh;
+    border: none;
+  }
+  
+  input, select {
+    background-color: silver;
+    height: 2em;
+    vertical-align: middle;
+  }
+  
+  input[type="radio"] {
+    margin: 0 1em;
+  }
+  
+  input {
+    margin: 0.5em auto;
+  }
+  
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 1vh;
+    border-radius: 1vh;
+    background-color: silver;
+  }
+  
+  #terms {
+    text-align: center;
+  }
+  
+  a {
+    color: white;
+  }
+  
+  input:hover, textarea:hover, select:hover, button:hover {
+    background-color: green;
+    color: white;
+  }
+  
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    height: 2em;
+    border-radius: 1vh;
+    color: black;
+    border: none;
+    background-color: white;
+  }
