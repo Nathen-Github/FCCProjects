@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="top-header">
+        <img id="alpaca-logo" src="https://files.readme.io/2a85a89-black-alpaca-logo.svg" alt="alpaca-logo">
+        <div class="top-header-buttons">
+          <a class="top-header-button"><p>Log in</p></a>
+          <a class="top-header-button"><p>Trading dashboard</p></a>
+          <a class="top-header-button"><p>Broker dashboard</p></a>
+          <img id="light-mode-icon" src="https://cdn3.iconfinder.com/data/icons/meteocons/512/sun-symbol-512.png" alt="Light mode icon">
+        </div>
+      </div>
+      <div class="main-header-separation"></div>
+      <div class="bottom-header">
+        <div class="bottom-header-buttons">
+          <div class="icon-text-combo">
+            <p>v1.1</p>
+            <img id="bottom-arrow-icon" src="https://cdn-icons-png.flaticon.com/512/54/54785.png" alt="bottom arrow">
+          </div>
+          <div class="icon-text-combo">
+            <img class="icon" src="https://static-00.iconduck.com/assets.00/house-icon-512x471-t03b54sj.png" alt="home-icon">
+            <p> Home</p>
+          </div>
+          <div class="icon-text-combo docs">
+            <img class="icon" src="https://cdn-icons-png.flaticon.com/512/864/864685.png" alt="home-icon">
+            <p> Documentation</p>
+          </div>
+          <div class="icon-text-combo">
+            <img class="icon" src="https://cdn-icons-png.flaticon.com/512/6528/6528597.png" alt="home-icon">
+            <p> API Reference</p>
+          </div>
+          <div class="icon-text-combo">
+            <img class="icon" src="https://cdn-icons-png.freepik.com/512/4321/4321209.png" alt="home-icon">
+            <p> Changelog</p>
+          </div>
+        </div>
+        <input type="text" placeholder="  Search">
+      </div>
+    </header>
+    <div class="nav-main-holder">
+      <nav id="navbar">
+        <header>
+          <h4>API Information</h4>
+        </header>
+        <div class="nav-box"><a class="nav-link" href="#authentication">Authentication</a></div>
+        <div class="nav-box"><a class="nav-link" href="#trading_account">Trading Account</a></div>
+        <div class="nav-box"><a class="nav-link" href="#crypto_orders">Crypto Orders</a></div>
+        <div class="nav-box"><a class="nav-link" href="#crypto_pricing_data">Crypto Pricing Data</a></div>
+        <div class="nav-box"><a class="nav-link" href="#crypto_fees">Crypto Fees</a></div>
+      </nav>
+      <main id="main-doc">
+        <section class="main-section" id="authentication">
+          <header>
+            <h2>Authentication</h2>
+          </header>
+          <p>How to authenticate to Trading API.</p>
+            <hr>
+            <h3>Live Trading</h3>
+            <p>Alpaca’s live API domain is https://api.alpaca.markets.</p>
+
+            <p>Every private API call requires key-based authentication. API keys can be acquired in the developer web console. The client must provide a pair of API key ID and secret key in the HTTP request headers named APCA-API-KEY-ID and APCA-API-SECRET-KEY, respectively.</p>
+
+            <p>Here is an example using curl showing how to authenticate with the API.</p>
+            <div class="code-holder">
+              <code>
+                curl -X GET \
+      -H "APCA-API-KEY-ID: {YOUR_API_KEY_ID}"  
+      -H "APCA-API-SECRET-KEY: {YOUR_API_SECRET_KEY}"  
+      https://{apiserver_domain}/v2/account
+              </code>
+            </div>
+        </section>
+        <section class="main-section" id="trading_account">
+          <header>
+            <h2>Trading Account</h2>
+          </header>
+          <hr>
+            <h3>Alpaca Brokerage Account (Live Trading)</h3>
+            <p>After creating an Alpaca Paper Only Account, you can enable live trading by becoming an Alpaca Brokerage Account holder. This requires you to go through an account on-boarding process with Alpaca Securities LLC, a FINRA member and SEC registered broker-dealer. We now support brokerage accounts for individuals and business entities from around the world.</p>
+            <p>With a brokerage account, you will be able to fully utilize Alpaca for your automated trading and investing needs. Using the Alpaca API, you’ll be able to buy and sell stocks in your brokerage account, and you’ll receive real-time consolidated market data. In addition, you will continue to be able to test your strategies and simulate your trades in our paper trading environment. And with the Alpaca web dashboard, it’s easy to monitor both your paper trading and your real money brokerage account. All accounts are opened as margin accounts. Accounts with $2,000 or more equity will have access to margin trading and short selling.</p>
+            <h3>The Account Object</h3>
+            <p>The account API serves important information related to an account, including account status, funds available for trade, funds available for withdrawal, and various flags relevant to an account’s ability to trade.</p>
+            <p>An account maybe be blocked for just for trades (trading_blocked flag) or for both trades and transfers (account_blocked flag) if Alpaca identifies the account to be engaging in any suspicious activity. Also, in accordance with FINRA’s pattern day trading rule, an account may be flagged for pattern day trading (pattern_day_trader flag), which would inhibit an account from placing any further day-trades.</p>
+            <p>Please note that cryptocurrencies are not eligible assets to be used as collateral for margin accounts and will require the asset be traded using cash only.</p>
+            <h3>Sample Object</h3>
+            <div class="code-holder">
+              <code>
+                {
+  "account_blocked": false,
+  "account_number": "010203ABCD",
+  "buying_power": "262113.632",
+  "cash": "-23140.2",
+  "created_at": "2019-06-12T22:47:07.99658Z",
+  "currency": "USD",
+  "crypto_status": "ACTIVE",
+  "non_marginable_buying_power": "7386.56",
+  "accrued_fees": "0",
+  "pending_transfer_in": "0",
+  "pending_transfer_out": "0",
+  "daytrade_count": "0",
+  "daytrading_buying_power": "262113.632",
+  "equity": "103820.56",
+  "id": "e6fe16f3-64a4-4921-8928-cadf02f92f98",
+  "initial_margin": "63480.38",
+  "last_equity": "103529.24",
+  "last_maintenance_margin": "38000.832",
+  "long_market_value": "126960.76",
+  "maintenance_margin": "38088.228",
+  "multiplier": "4",
+  "pattern_day_trader": false,
+  "portfolio_value": "103820.56",
+  "regt_buying_power": "80680.36",
+  "short_market_value": "0",
+  "shorting_enabled": true,
+  "sma": "0",
+  "status": "ACTIVE",
+  "trade_suspended_by_user": false,
+  "trading_blocked": false,
+  "transfers_blocked": false
+}
+              </code>
+            </div>
+        </section>
+        <section class="main-section" id="crypto_orders">
+          <header>
+            <h2>Crypto Orders</h2>
+          </header>
+          <hr>
+          <p>You can submit crypto orders through the traditional orders API endpoints (POST/orders).</p>
+          <ul>
+            <li>The following order types are supported: market, limit and stop_limit</li>
+            <li>The following time_in_force values are supported: gtc, and ioc</li>
+            <li>We accept fractional orders as well with either notional or qty provided</li>
+          </ul>
+          <p>You can submit crypto orders for a any supported crypto pair via API, see the below cURL POST request.</p>
+          <div class="code-holder">
+            <code>
+              curl --request POST 'https://paper-api.alpaca.markets/v2/orders' \
+--header 'Apca-Api-Key-Id: <KEY>' \
+--header 'Apca-Api-Secret-Key: <SECRET>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "symbol": "BTC/USD",
+  "qty": "0.0001",
+  "side": "buy",
+  "type": "market",
+  "time_in_force": "gtc"
+}'
+            </code>
+          </div>
+          <p>The above request submits a market order via API to buy 0.0001 BTC with USD (BTC/USD pair) that is good till end of day.</p>
+        </section>
+        <section class="main-section" id="crypto_pricing_data">
+          <header>
+            <h2>Crypto Pricing Data</h2>
+          </header>
+          <p>Alpaca provides free limited crypto data and a more advanced unlimited paid plan.</p>
+          <hr>
+          <p>To request trading pairs data via REST API, see <a rel="noopener" href="https://docs.alpaca.markets/reference/v1beta2cryptobars" target="_blank">Crypto Pricing Data REST API</a> Reference.</p>
+          <p>The example below requests the latest order book data (bid and asks) for the following three crypto trading pairs: BTC/USD, ETH/BTC and ETH/USD.</p>
+          <div class="code-holder">
+            <code>
+              curl --request GET 'https://data.alpaca.markets/v1beta3/crypto/us/latest/orderbooks?symbols=BTC/USD,ETH/BTC,ETH/USD,SOL/USDT' \
+--header 'Apca-Api-Key-Id: <KEY>' \
+--header 'Apca-Api-Secret-Key: <SECRET>'
+  {
+    "orderbooks": {
+        "BTC/USD": {
+            "a": [
+                {
+                    "p": 27539.494,
+                    "s":  0.2632414
+                },
+                ...
+            ],
+            "b": [
+                {
+                    "p": 27511.78083,
+                    "s": 0.26265668
+                },
+                ...
+            ],
+            "t": "2023-03-18T13:31:44.932988033Z"
+        },
+        "ETH/USD": { ... },
+        "ETH/BTC": { ... },
+        "SOL/USDT": { ... }
+    }
+}
+            </code>
+          </div>
+        </section>
+        <section class="main-section" id="crypto_fees">
+          <header>
+            <h2>Crypto Fees</h2>
+          </header>
+          <hr>
+          <p>While Alpaca stock trading remains commission-free, crypto trading includes a small fee per trade dependent on your executed volume and order type. Any market or exchange consists of two parties, buyers and sellers. When you place an order to buy crypto on the Alpaca Exchange, there is someone else on the other side of the trade selling what you want to buy. The seller's posted order on the order book is providing liquidity to the exchange and allows for the trade to take place. Note, that both buyers and sellers can be makers or takers depending on the order entered and current quote of the coin. <b>A maker is someone who adds liquidity, and the order gets placed on the order book. A Taker on the other hand removes the liquidity by placing a market or marketable limit order which executes against posted orders.</b></p>
+          <p>See the below table with volume-tiered fee pricing:</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>30D Crypto Volume (USD)</th>
+                <th>Maker</th>
+                <th>Take</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>0 - 100,000</td>
+                <td>0.15%</td>
+                <td>0.25%</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>100,000 - 500,000</td>
+                <td>0.12%</td>
+                <td>0.22%</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>500,000 - 1,000,000</td>
+                <td>0.10%</td>
+                <td>0.20%</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>1,000,000 - 10,000,000</td>
+                <td>0.08%</td>
+                <td>0.18%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>See below example of CFEE object:</p>
+          <div class="code-holder">
+            <code>
+              {
+    "id": "20220812000000000::53be51ba-46f9-43de-b81f-576f241dc680",
+    "activity_type": "CFEE",
+    "date": "2022-08-12",
+    "net_amount": "0",
+    "description": "Coin Pair Transaction Fee (Non USD)",
+    "symbol": "ETHUSD",
+    "qty": "-0.000195",
+    "price": "1884.5",
+    "status": "executed"
+}
+            </code>
+          </div>
+          <p>
+            Fees are currently calculated and posted end of day. If you query on same day of trade you might not get results. We will be providing an update for fee posting to be real-time in the near future.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
