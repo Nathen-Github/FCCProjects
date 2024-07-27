@@ -1,0 +1,124 @@
+:root {
+    --background: #011627;
+    --accent1: #FF3366;
+    --accent2: #16F4D0;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--background);
+}
+
+main {
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    max-width: 1000px;
+    width: 80%;
+}
+
+nav {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    background-color: #16F4D0;
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+    border-bottom: 5px solid var(--accent1);
+}
+
+nav a:last-of-type {
+    margin-right: 20px;
+}
+
+nav a {
+    color: var(--background);
+    font-family: "Climate Crisis", sans-serif;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+section {
+    border-bottom: 5px solid var(--accent1);
+}
+
+#welcome-section {
+    height: 100vh;
+}
+
+.main-text-wrapper {
+    margin: calc(50vh - 100px) auto;
+}
+
+.main-text-wrapper p {
+    font-family: "Actor", sans-serif;
+}
+
+h1 , h2 {
+    font-family: "Dela Gothic One", sans-serif;
+}
+
+#projects div {
+    color: white;
+    background-color: #16F4D0;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#projects a {
+    text-decoration: none;
+    color: var(--background);
+    font-family: "Actor", sans-serif;
+}
+
+#projects div:hover {
+    opacity: 0.7;
+    transition: opacity 75ms linear;
+}
+
+.links {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+footer {
+    height: 200px;
+    background-color: #16F4D0;
+    margin-top: 200px;
+    border-top: 5px solid var(--accent1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact a {
+    color: white;
+}
+
+#contact a:hover {
+    color: var(--accent2);
+    transition: color 75ms linear;
+}
+
+@media only screen and (max-width: 500px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav a:last-of-type {
+        margin: 0;
+    }
+}
